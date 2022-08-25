@@ -71,44 +71,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-Ubuntu 添加环境变量" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/08/25/Ubuntu%20%E6%B7%BB%E5%8A%A0%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" class="article-date">
-  <time class="dt-published" datetime="2022-08-25T09:56:45.784Z" itemprop="datePublished">2022-08-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="Ubuntu-添加环境变量"><a href="#Ubuntu-添加环境变量" class="headerlink" title="Ubuntu 添加环境变量"></a>Ubuntu 添加环境变量</h1><h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">export PATH=命令行路径:$PATH</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">配置完后可以通过<span class="built_in">echo</span> <span class="variable">$PATH</span>查看配置结果。</span></span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">生效方法：立即生效</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">有效期限：临时改变，只能在当前的终端窗口中有效，当前窗口关闭后就会恢复原有的path配置</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">用户局限：仅对当前用户</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">方法二：</span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">通过修改.bashrc文件:</span></span><br><span class="line">sudo vim ~/.bashrc </span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">在最后一行添上：</span></span><br><span class="line">export PATH=命令行路径:$PATH</span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">生效方法：（有以下两种）</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">1、关闭当前终端窗口，重新打开一个新终端窗口就能生效</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">2、输入“<span class="built_in">source</span> ~/.bashrc”命令，立即生效</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">有效期限：永久有效</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">用户局限：仅对当前用户</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">方法三：</span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">通过修改profile文件:</span></span><br><span class="line">sudo vim /etc/profile</span><br><span class="line">export PATH=命令行路径:$PATH</span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">生效方法（有以下两种）</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">1：<span class="built_in">source</span> /etc/profile</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">有效性：只在当前终端生效</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">2：系统重启</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">有效期限：永久有效</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">用户局限：对所有用户</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="方法四"><a href="#方法四" class="headerlink" title="方法四"></a>方法四</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">方法四：</span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">通过修改environment文件:</span></span><br><span class="line">sudo vim /etc/environment</span><br><span class="line">在PATH=&quot;/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin&quot;中加入 </span><br><span class="line">&quot;:命令行路径&quot;</span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">生效方法：系统重启</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">有效期限：永久有效</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">用户局限：对所有用户</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/08/25/Ubuntu%20%E6%B7%BB%E5%8A%A0%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" data-id="cl78vf71m00000ova0bql4mdq" data-title="" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
     <article id="post-第一篇博客" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/08/25/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="article-date">
@@ -137,6 +99,51 @@
     </div>
     <footer class="article-footer">
       <a data-url="http://example.com/2022/08/25/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" data-id="cl78ryx4200004ova7p7z3sjj" data-title="第一篇博客" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Ubuntu 添加环境变量" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/08/25/Ubuntu%20%E6%B7%BB%E5%8A%A0%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" class="article-date">
+  <time class="dt-published" datetime="2022-08-25T08:03:10.000Z" itemprop="datePublished">2022-08-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/08/25/Ubuntu%20%E6%B7%BB%E5%8A%A0%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">Ubuntu添加环境变量</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">export PATH=命令行路径:$PATH</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">配置完后可以通过<span class="built_in">echo</span> <span class="variable">$PATH</span>查看配置结果。</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">生效方法：立即生效</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">有效期限：临时改变，只能在当前的终端窗口中有效，当前窗口关闭后就会恢复原有的path配置</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">用户局限：仅对当前用户</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">方法二：</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">通过修改.bashrc文件:</span></span><br><span class="line">sudo vim ~/.bashrc</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">在最后一行添上：</span></span><br><span class="line">export PATH=命令行路径:$PATH</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">生效方法：（有以下两种）</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">1、关闭当前终端窗口，重新打开一个新终端窗口就能生效</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">2、输入“<span class="built_in">source</span> ~/.bashrc”命令，立即生效</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">有效期限：永久有效</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">用户局限：仅对当前用户</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">方法三：</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">通过修改profile文件:</span></span><br><span class="line">sudo vim /etc/profile</span><br><span class="line">export PATH=命令行路径:$PATH</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">生效方法（有以下两种）</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">1：<span class="built_in">source</span> /etc/profile</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">有效性：只在当前终端生效</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">2：系统重启</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">有效期限：永久有效</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">用户局限：对所有用户</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="方法四"><a href="#方法四" class="headerlink" title="方法四"></a>方法四</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">方法四：</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">通过修改environment文件:</span></span><br><span class="line">sudo vim /etc/environment</span><br><span class="line">在PATH=&quot;/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin&quot;中加入</span><br><span class="line">&quot;:命令行路径&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">生效方法：系统重启</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">有效期限：永久有效</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">用户局限：对所有用户</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/08/25/Ubuntu%20%E6%B7%BB%E5%8A%A0%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" data-id="cl78vf71m00000ova0bql4mdq" data-title="Ubuntu添加环境变量" class="article-share-link">Share</a>
       
       
       
@@ -258,11 +265,11 @@
       <ul>
         
           <li>
-            <a href="/2022/08/25/Ubuntu%20%E6%B7%BB%E5%8A%A0%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">(no title)</a>
+            <a href="/2022/08/25/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">第一篇博客</a>
           </li>
         
           <li>
-            <a href="/2022/08/25/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">第一篇博客</a>
+            <a href="/2022/08/25/Ubuntu%20%E6%B7%BB%E5%8A%A0%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">Ubuntu添加环境变量</a>
           </li>
         
           <li>
