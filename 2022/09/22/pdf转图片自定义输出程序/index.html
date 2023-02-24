@@ -1,0 +1,165 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>pdf转图片自定义输出程序 | 时之守博客</title><meta name="keywords" content="pdf,文件处理"><meta name="author" content="wy51boss,wuyi51io@outlook.com"><meta name="copyright" content="wy51boss"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="PDF转图片自定义输出一、引入必要库12import fitzimport os  也可以检查一下版本就是了：print(fitz.__doc__) 上一篇文章已经介绍过要使用的库，和写代码要用到的思路了。我们直接开始： 二、找到文件首先是我们要获取用户的输入：也就是说用户输入路径，我们呢只对这路径下面的文件进行处理：使用input()方法即可 1dir&#x3D;input(&quot;请输入要处理的文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pdf转图片自定义输出程序">
+<meta property="og:url" content="http://wy51boss.github.io/2022/09/22/pdf%E8%BD%AC%E5%9B%BE%E7%89%87%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BE%93%E5%87%BA%E7%A8%8B%E5%BA%8F/index.html">
+<meta property="og:site_name" content="时之守博客">
+<meta property="og:description" content="PDF转图片自定义输出一、引入必要库12import fitzimport os  也可以检查一下版本就是了：print(fitz.__doc__) 上一篇文章已经介绍过要使用的库，和写代码要用到的思路了。我们直接开始： 二、找到文件首先是我们要获取用户的输入：也就是说用户输入路径，我们呢只对这路径下面的文件进行处理：使用input()方法即可 1dir&#x3D;input(&quot;请输入要处理的文件">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2022-09-22T12:54:56.000Z">
+<meta property="article:modified_time" content="2022-09-23T01:47:16.595Z">
+<meta property="article:author" content="wy51boss">
+<meta property="article:tag" content="pdf">
+<meta property="article:tag" content="文件处理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://wy51boss.github.io/2022/09/22/pdf%E8%BD%AC%E5%9B%BE%E7%89%87%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BE%93%E5%87%BA%E7%A8%8B%E5%BA%8F/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'pdf转图片自定义输出程序',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-09-23 09:47:16'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">时之守博客</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">pdf转图片自定义输出程序</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-09-22T12:54:56.000Z" title="发表于 2022-09-22 20:54:56">2022-09-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-09-23T01:47:16.595Z" title="更新于 2022-09-23 09:47:16">2022-09-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%BB%A3%E7%A0%81%E6%80%9D%E8%B7%AF/">代码思路</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="pdf转图片自定义输出程序"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="PDF转图片自定义输出"><a href="#PDF转图片自定义输出" class="headerlink" title="PDF转图片自定义输出"></a>PDF转图片自定义输出</h1><h2 id="一、引入必要库"><a href="#一、引入必要库" class="headerlink" title="一、引入必要库"></a>一、引入必要库</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import fitz</span><br><span class="line">import os</span><br></pre></td></tr></table></figure>
+
+<p>也可以检查一下版本就是了：<code>print(fitz.__doc__)</code></p>
+<p>上一篇文章已经介绍过要使用的库，和写代码要用到的思路了。我们直接开始：</p>
+<h2 id="二、找到文件"><a href="#二、找到文件" class="headerlink" title="二、找到文件"></a>二、找到文件</h2><p>首先是我们要获取用户的输入：也就是说用户输入路径，我们呢只对这路径下面的文件进行处理：使用input()方法即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dir=input(&quot;请输入要处理的文件夹或者文件路径&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>当然我们可以展开让用户选择是否处理子文件夹，我这里暂且不谈。</p>
+<p>那么我们需要判断用户输入的是一个pdf文件还是一个文件夹，这里使用介绍过的<code>os.path.isdir()</code>方法，当然用isfile也是一样，这里不做多余的事情就用这一个即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">if os.path.isdir(dir):</span><br><span class="line">    print(&quot;你选择了批处理文件夹&quot;,dir)</span><br><span class="line">    path_list = os.listdir(dir)</span><br><span class="line">    filelist=[]</span><br><span class="line">    for filename in path_list:</span><br><span class="line">        fileway=dir + &quot;\\&quot; + filename</span><br><span class="line">        if os.path.isdir(dir+&quot;\\&quot;+filename) == False: #如果不是文件夹</span><br><span class="line">            filelist.append(fileway) #把文件路径加入列表</span><br><span class="line">            </span><br><span class="line">else:</span><br><span class="line">    print(&quot;你选择了处理单个文件&quot;,dir)</span><br></pre></td></tr></table></figure>
+
+<p>找到文件路径之后把他们加入了一个列表，接下来就是对他们的处理,这里我们选择向用户了解处理的方式和输出的方式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">severtype = input(&quot;请选择处理的方式：\n1.转png\n2.转jpg\n3.仅改名\n4.更多\n&quot;)</span><br><span class="line">      nametype = input(&quot;请选择输出的文件命名格式：\n1.原文件相同带页标\n2.生成同名文件夹page加页标\n3.仅编号\n&quot;)</span><br><span class="line">      outway = getoutway()  # 获取输出目录</span><br><span class="line">      </span><br></pre></td></tr></table></figure>
+
+<p>注意这里的getoutway():</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def getoutway():</span><br><span class="line">    #确保路径正确</span><br><span class="line">    outway=input(&quot;接下来选择处理后输出的路径&quot;)</span><br><span class="line">    if os.path.isdir(outway) == False:</span><br><span class="line">        print(&quot;请输入正确路径&quot;)</span><br><span class="line">        outway=getoutway()</span><br><span class="line">    return outway</span><br></pre></td></tr></table></figure>
+
+<p>然后我们就得到用户的想法了：这时我们需要对文件进行用户想要的操作，也就是一系列选择中找到用户需要的：</p>
+<p>我们开始编写文件处理模块：这里默认使用单位矩阵处理pdf生成图像文件，我们可以生成更大的文件或者让用户设定dpi，这里我只实现设定缩放功能，dpi设置放在以后再完善。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://wy51boss.github.io">wy51boss</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://wy51boss.github.io/2022/09/22/pdf%E8%BD%AC%E5%9B%BE%E7%89%87%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BE%93%E5%87%BA%E7%A8%8B%E5%BA%8F/">http://wy51boss.github.io/2022/09/22/pdf%E8%BD%AC%E5%9B%BE%E7%89%87%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BE%93%E5%87%BA%E7%A8%8B%E5%BA%8F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://wy51boss.github.io" target="_blank">时之守博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/pdf/">pdf</a><a class="post-meta__tags" href="/tags/%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86/">文件处理</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/09/21/pdf%E8%BD%AC%E5%9B%BE%E7%89%87%E7%9A%84%E6%96%B9%E6%B3%95%E6%80%9D%E8%80%83/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">pdf转图片的方法思考</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/09/21/pdf%E8%BD%AC%E5%9B%BE%E7%89%87%E7%9A%84%E6%96%B9%E6%B3%95%E6%80%9D%E8%80%83/" title="pdf转图片的方法思考"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-21</div><div class="title">pdf转图片的方法思考</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">wy51boss</div><div class="author-info__description">时间的裂缝里，看见失望的自己。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/wy51boss"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PDF%E8%BD%AC%E5%9B%BE%E7%89%87%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BE%93%E5%87%BA"><span class="toc-number">1.</span> <span class="toc-text">PDF转图片自定义输出</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%BC%95%E5%85%A5%E5%BF%85%E8%A6%81%E5%BA%93"><span class="toc-number">1.1.</span> <span class="toc-text">一、引入必要库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%89%BE%E5%88%B0%E6%96%87%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text">二、找到文件</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/09/22/pdf%E8%BD%AC%E5%9B%BE%E7%89%87%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BE%93%E5%87%BA%E7%A8%8B%E5%BA%8F/" title="pdf转图片自定义输出程序"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="pdf转图片自定义输出程序"/></a><div class="content"><a class="title" href="/2022/09/22/pdf%E8%BD%AC%E5%9B%BE%E7%89%87%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BE%93%E5%87%BA%E7%A8%8B%E5%BA%8F/" title="pdf转图片自定义输出程序">pdf转图片自定义输出程序</a><time datetime="2022-09-22T12:54:56.000Z" title="发表于 2022-09-22 20:54:56">2022-09-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/21/pdf%E8%BD%AC%E5%9B%BE%E7%89%87%E7%9A%84%E6%96%B9%E6%B3%95%E6%80%9D%E8%80%83/" title="pdf转图片的方法思考"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="pdf转图片的方法思考"/></a><div class="content"><a class="title" href="/2022/09/21/pdf%E8%BD%AC%E5%9B%BE%E7%89%87%E7%9A%84%E6%96%B9%E6%B3%95%E6%80%9D%E8%80%83/" title="pdf转图片的方法思考">pdf转图片的方法思考</a><time datetime="2022-09-21T13:04:29.000Z" title="发表于 2022-09-21 21:04:29">2022-09-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/21/%E4%BD%BF%E7%94%A8labeling%E5%BC%80%E5%A7%8B%E5%9B%BE%E5%83%8F%E6%A0%87%E6%B3%A8/" title="使用labeling开始图像标注"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="使用labeling开始图像标注"/></a><div class="content"><a class="title" href="/2022/09/21/%E4%BD%BF%E7%94%A8labeling%E5%BC%80%E5%A7%8B%E5%9B%BE%E5%83%8F%E6%A0%87%E6%B3%A8/" title="使用labeling开始图像标注">使用labeling开始图像标注</a><time datetime="2022-09-21T07:11:38.000Z" title="发表于 2022-09-21 15:11:38">2022-09-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/21/anaconda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85Pytorch/" title="anaconda虚拟环境安装Pytorch"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="anaconda虚拟环境安装Pytorch"/></a><div class="content"><a class="title" href="/2022/09/21/anaconda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85Pytorch/" title="anaconda虚拟环境安装Pytorch">anaconda虚拟环境安装Pytorch</a><time datetime="2022-09-21T07:11:10.000Z" title="发表于 2022-09-21 15:11:10">2022-09-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/20/%E5%9C%A8%E5%B7%B2%E5%AE%89%E8%A3%85python%E7%8E%AF%E5%A2%83%E7%9A%84%E5%9F%BA%E7%A1%80%E4%B8%8A%E5%AE%89%E8%A3%85anaconda/" title="在已安装python环境的基础上安装anaconda"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在已安装python环境的基础上安装anaconda"/></a><div class="content"><a class="title" href="/2022/09/20/%E5%9C%A8%E5%B7%B2%E5%AE%89%E8%A3%85python%E7%8E%AF%E5%A2%83%E7%9A%84%E5%9F%BA%E7%A1%80%E4%B8%8A%E5%AE%89%E8%A3%85anaconda/" title="在已安装python环境的基础上安装anaconda">在已安装python环境的基础上安装anaconda</a><time datetime="2022-09-20T09:33:03.000Z" title="发表于 2022-09-20 17:33:03">2022-09-20</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By wy51boss</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
